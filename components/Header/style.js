@@ -4,10 +4,8 @@ export const HeaderContainer = styled.header`
   margin: 0 auto;
   background-image: linear-gradient(rgba(65, 184, 131, 0.3), rgb(0, 0, 0)),
     url(${(props) => props.url});
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  height: 500px;
+  height: 60vh;
+  object-fit: cover;
 `;
 
 export const Infos = styled.div`
