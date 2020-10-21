@@ -1,5 +1,6 @@
 import { Header } from "../components/Header";
 import Nav from "../components/Nav";
+import Search from "../components/search";
 import { Container } from "../styles/Container";
 
 export default function Home({ data }) {
@@ -7,6 +8,7 @@ export default function Home({ data }) {
     <Container>
       <Nav />
       <Header data={data} />
+      <Search />
       <h1>Hello World</h1>
     </Container>
   );
