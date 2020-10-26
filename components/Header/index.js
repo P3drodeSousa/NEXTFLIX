@@ -1,8 +1,13 @@
 import { HeaderContainer, Infos, SubInfoContainer } from "./style";
 
-export const Header = ({ data }) => {
-  const { title, release_date, backdrop_path: img } = data;
+export const Header = ({ data, selected }) => {
+  const { title, release_date, backdrop_path: img, id } = data;
   const date = release_date.split("-")[0];
+
+  const onClick = (id) => {
+    selected(id);
+  };
+
   return (
     <HeaderContainer url={`https://image.tmdb.org/t/p/w1280${img}`}>
       <Infos>
@@ -12,7 +17,7 @@ export const Header = ({ data }) => {
 
         <SubInfoContainer>
           <span>{date}</span>
-          <button>Read More</button>
+          <button onClick={() => onClick(id)}>Read More</button>
         </SubInfoContainer>
       </Infos>
     </HeaderContainer>

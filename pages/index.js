@@ -1,15 +1,32 @@
+import { useState } from "react";
 import { Header } from "../components/Header";
+import Movies from "../components/Movie";
+import MovieDetails from "../components/MovieDetails";
 import Nav from "../components/Nav";
-import Search from "../components/search";
+import Search from "../components/Search";
 import { Container } from "../styles/Container";
+import selectMovie from "../utils/selectedMovie";
 
 export default function Home({ data }) {
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const { selectedMov, opened } = selectMovie(selectedMovie);
+
+  const setMovie = (id) => {
+    setSelectedMovie(id);
+  };
+
+  const close = () => {
+    setSelectedMovie("");
+  };
+
   return (
     <Container>
+      <MovieDetails drawer={opened} close={close} id={selectedMov} />
       <Nav />
-      <Header data={data} />
+      <Header data={data} selected={setMovie} />
       <Search />
-      <h1>Hello World</h1>
+      <Movies selected={setMovie} />
     </Container>
   );
 }

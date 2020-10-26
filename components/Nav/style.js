@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const NavContainer = styled.nav`
   width: 90%;
+  height: 100px;
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
