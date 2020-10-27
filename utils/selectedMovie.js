@@ -7,7 +7,6 @@ export default function selectMovie(id) {
   useEffect(() => {
     if (!id) {
       setOpen(false);
-      console.log(opened);
       return;
     }
     setSelectedMovie(id);

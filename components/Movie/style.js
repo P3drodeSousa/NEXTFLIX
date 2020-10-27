@@ -5,7 +5,10 @@ export const MovieContainer = styled.div`
   height: 80%;
   display: grid;
   grid-gap: 8px;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: ${(props) =>
+    props.wish
+      ? "repeat(auto-fit, minmax(160px, 160px))"
+      : "repeat(auto-fit, minmax(160px, 1fr))"};
 
   > div {
     width: 100%;

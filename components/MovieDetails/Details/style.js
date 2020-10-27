@@ -48,7 +48,7 @@ export const Button = styled.button`
   margin: 50px auto;
   display: block;
   border: none;
-  background: #19181a;
+  background: ${(props) => (props.remove ? "#41b883" : "#19181a")};
   padding: 10px 20px;
   text-transform: uppercase;
   color: #fff;

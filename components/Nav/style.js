@@ -21,6 +21,7 @@ export const MenuItem = styled.a`
   font-weight: 700;
   margin-right: auto;
   cursor: pointer;
+  z-index: 99999999;
 `;
 
 export const ALink = styled.a`

@@ -1,13 +1,19 @@
+import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/Ai";
+import useLocal from "../../../utils/useLocalStorage";
 import { Container, Flex, Genre, H2, Review, P, Info, Button } from "./style";
 
 function Details({ details }) {
+  const [wachlist, setWatchList] = useState([]);
+
   const convertMinsToHrsMins = (mins) => {
     let h = Math.floor(mins / 60);
     let m = mins % 60;
     m = m < 10 ? "0" + m : m;
     return `${h}h${m}min`;
   };
+
+  const [watchlisted, setWatchListed] = useLocal();
 
   const addToWatchList = (item) => {
     let items;
@@ -18,18 +24,28 @@ function Details({ details }) {
     }
     items.push(item);
     localStorage.setItem("watchlist", JSON.stringify(items));
+    setWatchListed((prevEls) => [...prevEls, item]);
   };
 
   // A FINIR
-  const removeLocalTodos = (item) => {
+  const removeLocalTodos = (id) => {
     let movies;
     if (localStorage.getItem("watchlist") === null) {
       movies = [];
     } else {
       movies = JSON.parse(localStorage.getItem("watchlist"));
     }
-    // movies.splice(movies.indexOf(todoIndex), 1);
-    // localStorage.setItem("movies", JSON.stringify(movies));
+    const indexItem = watchlisted.findIndex((el) => el.id === id);
+    movies.splice(indexItem, 1);
+    setWatchListed(movies);
+    localStorage.setItem("watchlist", JSON.stringify(movies));
+  };
+
+  console.log(watchlisted);
+
+  const isListed = (id) => {
+    if (!watchlisted.length) return;
+    return watchlisted.some((el) => el.id === id);
   };
 
   return (
@@ -65,8 +81,15 @@ function Details({ details }) {
 
         <span>{convertMinsToHrsMins(details.runtime)}</span>
       </Info>
-
-      <Button onClick={() => addToWatchList(details)}>ADD TO WHATCHLIST</Button>
+      {isListed(details.id) ? (
+        <Button remove onClick={() => removeLocalTodos(details.id)}>
+          REMOVE FROM WHATCHLIST
+        </Button>
+      ) : (
+        <Button onClick={() => addToWatchList(details)}>
+          ADD TO WHATCHLIST
+        </Button>
+      )}
     </Container>
   );
 }

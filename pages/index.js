@@ -26,6 +26,7 @@ export default function Home({ data }) {
       <Header data={data} selected={setMovie} />
       <MovieDetails drawer={opened} close={close} id={selectedMov} />
       <Search />
+
       <Movies selected={setMovie} />
     </Container>
   );
