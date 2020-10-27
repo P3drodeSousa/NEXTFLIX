@@ -35,6 +35,7 @@ function MovieDetails({ drawer, id, close }) {
 
   const closeDrawer = () => {
     setReady(false);
+    setDetails("");
     close();
   };
 

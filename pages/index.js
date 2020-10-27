@@ -22,9 +22,9 @@ export default function Home({ data }) {
 
   return (
     <Container>
-      <MovieDetails drawer={opened} close={close} id={selectedMov} />
       <Nav />
       <Header data={data} selected={setMovie} />
+      <MovieDetails drawer={opened} close={close} id={selectedMov} />
       <Search />
       <Movies selected={setMovie} />
     </Container>

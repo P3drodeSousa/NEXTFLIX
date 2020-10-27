@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavContainer = styled.nav`
   width: 90%;
-  height: 100px;
+  top: 0;
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
@@ -12,7 +12,6 @@ export const NavContainer = styled.nav`
   position: fixed;
   padding: 1.5rem 0;
   z-index: 9999;
-  display: flex;
   overflow: hidden;
 `;
 

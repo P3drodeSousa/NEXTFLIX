@@ -18,6 +18,7 @@ function Wishlist() {
   return (
     <Container>
       <Nav />
+      <h1 style={{ color: "white" }}>Pedro</h1>
     </Container>
   );
 }

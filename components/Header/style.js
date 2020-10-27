@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  margin: 0 auto;
   height: 500px;
   background-image: linear-gradient(rgba(65, 184, 131, 0.3), rgb(0, 0, 0)),
     url(${(props) => props.url});
