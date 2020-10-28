@@ -13,7 +13,6 @@ function MovieDetails({ drawer, id, close }) {
     if (!id) return;
     setReady(false);
     setVideo("");
-    setDetails("");
 
     const fetchData = async (id) => {
       const movieDetails = await fetch(
@@ -34,8 +33,6 @@ function MovieDetails({ drawer, id, close }) {
   }, [id]);
 
   const closeDrawer = () => {
-    setReady(false);
-    setDetails("");
     close();
   };
 
@@ -48,7 +45,7 @@ function MovieDetails({ drawer, id, close }) {
       <div style={{ position: "relative" }}>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${video}`}
-          playing={true}
+          playing={drawer}
           onStart={() => setReady(true)}
         />
 
