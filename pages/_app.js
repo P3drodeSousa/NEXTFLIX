@@ -1,10 +1,12 @@
 import GlobalStyles from "../styles/global";
-
+import MovieState from "../context/movieState";
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <MovieState>
+        <Component {...pageProps} />
+      </MovieState>
     </>
   );
 }

@@ -1,18 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { IMG, MovieContainer } from "../components/Movie/style";
 import MovieDetails from "../components/MovieDetails";
 import Nav from "../components/Nav";
 import { Container, H1 } from "../styles/Container";
 import selectMovie from "../utils/selectedMovie";
-import useLocal from "../utils/useLocalStorage";
+import MovieContext from "../context/movieContext";
 
 function Wishlist() {
+  const movieContext = useContext(MovieContext);
+  const { watchlist, loadWatchList } = movieContext;
+
+  useEffect(() => {
+    loadWatchList();
+  }, []);
+
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [watchlist, setwatchlist] = useState([]);
-
   const { selectedMov, opened } = selectMovie(selectedMovie);
-
-  const [watchlisted, setWatchListed] = useLocal();
 
   const handleOnclick = (id) => {
     setSelectedMovie(id);
@@ -25,9 +28,10 @@ function Wishlist() {
   return (
     <Container>
       <Nav />
-      <H1 style={{ color: "white" }}>Your WatchList</H1>
+      <H1>Your WatchList</H1>
       <MovieContainer wish>
-        {watchlisted.reverse().map((movie, index) => {
+        {!watchlist.length && <H1>NO ITEMS YET</H1>}
+        {watchlist.map((movie, index) => {
           return (
             <div key={index} onClick={() => handleOnclick(movie.id)}>
               <IMG

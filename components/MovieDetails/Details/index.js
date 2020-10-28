@@ -1,10 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import { AiFillStar } from "react-icons/Ai";
 import useLocal from "../../../utils/useLocalStorage";
 import { Container, Flex, Genre, H2, Review, P, Info, Button } from "./style";
+import MovieContext from "../../../context/movieContext";
 
 function Details({ details }) {
-  const [wachlist, setWatchList] = useState([]);
+  const movieContext = useContext(MovieContext);
+  const {
+    watchlist,
+    loadWatchList,
+    addToWatchList,
+    removeWatchList,
+  } = movieContext;
+
+  useEffect(() => {
+    loadWatchList();
+  }, []);
 
   const convertMinsToHrsMins = (mins) => {
     let h = Math.floor(mins / 60);
@@ -13,39 +24,9 @@ function Details({ details }) {
     return `${h}h${m}min`;
   };
 
-  const [watchlisted, setWatchListed] = useLocal();
-
-  const addToWatchList = (item) => {
-    let items;
-    if (localStorage.getItem("watchlist") === null) {
-      items = [];
-    } else {
-      items = JSON.parse(localStorage.getItem("watchlist"));
-    }
-    items.push(item);
-    localStorage.setItem("watchlist", JSON.stringify(items));
-    setWatchListed((prevEls) => [...prevEls, item]);
-  };
-
-  // A FINIR
-  const removeLocalTodos = (id) => {
-    let movies;
-    if (localStorage.getItem("watchlist") === null) {
-      movies = [];
-    } else {
-      movies = JSON.parse(localStorage.getItem("watchlist"));
-    }
-    const indexItem = watchlisted.findIndex((el) => el.id === id);
-    movies.splice(indexItem, 1);
-    setWatchListed(movies);
-    localStorage.setItem("watchlist", JSON.stringify(movies));
-  };
-
-  console.log(watchlisted);
-
   const isListed = (id) => {
-    if (!watchlisted.length) return;
-    return watchlisted.some((el) => el.id === id);
+    if (!watchlist.length) return;
+    return watchlist.some((el) => el.id === id);
   };
 
   return (
@@ -82,7 +63,7 @@ function Details({ details }) {
         <span>{convertMinsToHrsMins(details.runtime)}</span>
       </Info>
       {isListed(details.id) ? (
-        <Button remove onClick={() => removeLocalTodos(details.id)}>
+        <Button remove onClick={() => removeWatchList(details.id)}>
           REMOVE FROM WHATCHLIST
         </Button>
       ) : (
