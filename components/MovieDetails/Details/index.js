@@ -1,17 +1,12 @@
 import { useEffect, useContext } from "react";
 import { AiFillStar } from "react-icons/Ai";
-import useLocal from "../../../utils/useLocalStorage";
 import { Container, Flex, Genre, H2, Review, P, Info, Button } from "./style";
 import MovieContext from "../../../context/movieContext";
 
 function Details({ details }) {
   const movieContext = useContext(MovieContext);
-  const {
-    watchlist,
-    loadWatchList,
-    addToWatchList,
-    removeWatchList,
-  } = movieContext;
+  const { watchlist, loadWatchList, addToWatchList, removeWatchList } =
+    movieContext;
 
   useEffect(() => {
     loadWatchList();

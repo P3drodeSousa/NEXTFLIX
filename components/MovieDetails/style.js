@@ -3,8 +3,10 @@ import { AiOutlineCloseCircle } from "react-icons/Ai";
 
 export const Drawer = styled.div`
   background: black;
-  width: 640px;
+  width: 100%;
+  max-width: 640px;
   height: 100%;
+  overflow-y: auto;
   position: fixed;
   top: 0;
   right: 0;
@@ -13,6 +15,15 @@ export const Drawer = styled.div`
     props.drawer ? "translateX(0px)" : "translateX(640px)"};
   transition: all 0.3s ease-in-out;
   color: white;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Icon = styled(AiOutlineCloseCircle)`

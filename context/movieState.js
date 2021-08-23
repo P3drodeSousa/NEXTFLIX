@@ -13,10 +13,16 @@ const MovieState = (props) => {
   // Load User
   const loadWatchList = async () => {
     try {
-      const items = await JSON.parse(localStorage.getItem("watchlist"));
+      let movies;
+
+      if (localStorage.getItem("watchlist") === null) {
+        movies = [];
+      } else {
+        movies = JSON.parse(localStorage.getItem("watchlist"));
+      }
       dispatch({
         type: LOAD_MOVIES,
-        payload: items,
+        payload: movies,
       });
     } catch (err) {}
   };

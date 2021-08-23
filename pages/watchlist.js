@@ -2,8 +2,9 @@ import { useState, useContext, useEffect } from "react";
 import { IMG, MovieContainer } from "../components/Movie/style";
 import MovieDetails from "../components/MovieDetails";
 import Nav from "../components/Nav";
-import { Container, H1 } from "../styles/Container";
-import selectMovie from "../utils/selectedMovie";
+import { Container, H1, H2 } from "../styles/Container";
+import selectMovie from "../hooks/selectedMovie";
+
 import MovieContext from "../context/movieContext";
 
 function Wishlist() {
@@ -30,7 +31,7 @@ function Wishlist() {
       <Nav />
       <H1>Your WatchList</H1>
       <MovieContainer wish>
-        {!watchlist.length && <H1>NO ITEMS YET</H1>}
+        {!watchlist.length && <H2>You have added any content yet</H2>}
         {watchlist.map((movie, index) => {
           return (
             <div key={index} onClick={() => handleOnclick(movie.id)}>
