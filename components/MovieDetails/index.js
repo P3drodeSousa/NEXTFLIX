@@ -4,7 +4,7 @@ import useSWR from "swr";
 import ReactPlayer from "react-player/lazy";
 import { Drawer, Icon } from "./style";
 import Details from "./Details";
-import { AiOutlineCloseCircle } from "react-icons/Ai";
+import { FaRegWindowClose } from "react-icons/fa";
 
 function MovieDetails({ drawer, id, close }, ref) {
   const { data } = useSWR(`/api/${id}`, fetcher);
@@ -32,7 +32,7 @@ function MovieDetails({ drawer, id, close }, ref) {
   return (
     <Drawer drawer={drawer}>
       <Icon onClick={closeDrawer}>
-        <AiOutlineCloseCircle color="white" size={45} />
+        <FaRegWindowClose color="white" size={45} />
       </Icon>
 
       <div style={{ position: "relative" }}>
