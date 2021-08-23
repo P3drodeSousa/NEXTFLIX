@@ -41,10 +41,10 @@ function MovieDetails({ drawer, id, close }, ref) {
           playing={drawer}
           onStart={() => setReady(true)}
           width="100%"
-          playsinline={true}
+          playsinline=true
         />
 
-        {!ready && (
+        {/* {!ready && (
           <img
             src={
               details?.backdrop_path
@@ -59,7 +59,7 @@ function MovieDetails({ drawer, id, close }, ref) {
             width="100%"
             style={{ position: "absolute", top: 0, zIndex: 9999 }}
           />
-        )}
+        )} */}
       </div>
 
       <div>{details && <Details details={details} />}</div>
