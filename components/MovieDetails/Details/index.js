@@ -1,5 +1,5 @@
 import { useEffect, useContext } from "react";
-import { AiFillStar } from "react-icons/Ai";
+import { FaStar } from "react-icons/fa";
 import { Container, Flex, Genre, H2, Review, P, Info, Button } from "./style";
 import MovieContext from "../../../context/movieContext";
 
@@ -38,7 +38,7 @@ function Details({ details }) {
         </div>
         <Flex>
           <div>
-            <AiFillStar color="#E4BB24" size={20} />
+            <FaStar color="#E4BB24" size={20} />
           </div>
           <Flex>
             <Review>{details.vote_average} / 10</Review>
