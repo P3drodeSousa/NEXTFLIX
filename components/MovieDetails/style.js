@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { AiOutlineCloseCircle } from "react-icons/Ai";
 
 export const Drawer = styled.div`
   background: black;
@@ -26,10 +25,9 @@ export const Drawer = styled.div`
   }
 `;
 
-export const Icon = styled(AiOutlineCloseCircle)`
+export const Icon = styled.div`
   width: 45px;
   height: 45px;
-  color: white;
   margin: 15px;
 
   &:hover {

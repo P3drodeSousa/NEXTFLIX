@@ -31,11 +31,9 @@ function MovieDetails({ drawer, id, close }, ref) {
   const { details, video } = data;
   return (
     <Drawer drawer={drawer}>
-      <div>
-        <Icon onClick={closeDrawer}>
-          <AiOutlineCloseCircle color="white"  />
-        </Icon>
-      </div>
+      <Icon onClick={closeDrawer}>
+        <AiOutlineCloseCircle color="white" size={45} />
+      </Icon>
 
       <div style={{ position: "relative" }}>
         <ReactPlayer
