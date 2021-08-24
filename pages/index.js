@@ -64,5 +64,6 @@ export const getStaticProps = async (ctx) => {
     props: {
       data: res.results[random],
     },
+    revalidate: 60 
   };
 };
