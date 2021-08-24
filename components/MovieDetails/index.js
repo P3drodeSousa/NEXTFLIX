@@ -41,7 +41,7 @@ function MovieDetails({ drawer, id, close }, ref) {
           playing={drawer}
           onStart={() => setReady(true)}
           width="100%"
-          playsinline
+          // playsinline
         />
 
         {!ready && (
