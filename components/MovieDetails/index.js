@@ -2,7 +2,7 @@ import { useState, forwardRef, useImperativeHandle, useCallback } from "react";
 import fetcher from "../../lib/fetcher";
 import useSWR from "swr";
 import ReactPlayer from "react-player/lazy";
-import { Drawer, Icon } from "./style";
+import { Drawer, Icon, Poster } from "./style";
 import Details from "./Details";
 import { FaRegWindowClose } from "react-icons/fa";
 
@@ -44,8 +44,8 @@ function MovieDetails({ drawer, id, close }, ref) {
           playsinline
         />
 
-        {/* {!ready && (
-          <img
+        {!ready && (
+          <Poster
             src={
               details?.backdrop_path
                 ? `https://image.tmdb.org/t/p/w1280${details.backdrop_path}`
@@ -54,12 +54,8 @@ function MovieDetails({ drawer, id, close }, ref) {
                 : `https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png`
             }
             alt="movie poster"
-            layout="responsive"
-            height="360px"
-            width="100%"
-            style={{ position: "absolute", top: 0, zIndex: 9999 }}
           />
-        )} */}
+        )}
       </div>
 
       <div>{details && <Details details={details} />}</div>

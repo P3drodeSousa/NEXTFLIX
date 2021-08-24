@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Drawer = styled.div`
   background: black;
   width: 100%;
-  max-width: 640px;
+  max-width: 768px;
   height: 100%;
   overflow-y: auto;
   position: fixed;
@@ -11,7 +11,7 @@ export const Drawer = styled.div`
   right: 0;
   z-index: 999999;
   transform: ${(props) =>
-    props.drawer ? "translateX(0px)" : "translateX(640px)"};
+    props.drawer ? "translateX(0px)" : "translateX(768px)"};
   transition: all 0.3s ease-in-out;
   color: white;
   -ms-overflow-style: none;
@@ -35,3 +35,15 @@ export const Icon = styled.div`
     transform: scale(1.1);
   }
 `;
+
+export const Poster = styled.img`
+height:360px;
+width:100%;
+position: absolute;
+top: 0; z-index: 9999;
+
+@media screen and (max-width: 768px){
+  display: none
+}
+
+`
